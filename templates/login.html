@@ -3,15 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Login - Water Utility Management</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHBoYzdwNmF5eXFoOWhyZHBsc2MzcWZoNXQ5eGVudHpienZ4NXR3dSZlcD12MV9pbnRlcm5naWZfYnlfaWQmY3Q9Zw/AlqUdr1CSODLO/giphy.gif') no-repeat center center/cover;
+            margin: 0;
+        }
+        .top-links {
+            position: absolute;
+            top: 20px;
+            display: flex;
+            gap: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 30px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.5);
+        }
+        .top-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .top-links a:hover {
+            color: #FFA500;
+        }
+        .login-form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+            text-align: center;
+            width: 350px;
+        }
+        .login-form h2 {
+            color: #007BFF;
+        }
+        .login-form input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background: #f1f1f1;
+            font-size: 16px;
+        }
+        .login-form button {
+            background: linear-gradient(to right, #007BFF, #0056b3);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Login</h1>
-    <form method="post">
-        <input type="text" name="username" placeholder="Username" required><br>
-        <input type="password" name="password" placeholder="Password" required><br>
-        <button type="submit">Login</button>
-    </form>
+    <div class="login-form">
+        <h2>LOGIN</h2>
+        <form action="/" method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <a href="forgotpass.html"><u>Forgot password?</u></a><br><br>
+            <button type="submit">Login</button>
+        </form>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </div>
 </body>
 </html>

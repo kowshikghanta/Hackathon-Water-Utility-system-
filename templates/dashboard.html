@@ -3,12 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Utility Management Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+h1 {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px;
+    margin: 0;
+}
+
+h2 {
+    color: #333;
+    margin-top: 20px;
+}
+
+canvas {
+    max-width: 90%;
+    height: 400px;
+    margin: 20px auto;
+    display: block;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 70%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+th {
+    background-color: #007BFF;
+    color: white;
+}
+
+td {
+    color: #333;
+}
+
+button {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #c82333;
+}
+
+    </style>
 </head>
 <body>
     <h1>Utility Management Dashboard</h1>
-    <iframe src="/graphs/" width="100%" height="600"></iframe>
-    <button onclick="location.href='/logout'">Logout</button>
+
+    <h2>Live Sensor Data</h2>
+    <canvas id="sensorChart"></canvas>
+
+    <h2>Last 10 Readings</h2>
+    <center>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Flow Rate (L/min)</th>
+                <th>Water Level (cm)</th>
+            </tr>
+        </thead>
+        <tbody id="data-table-body">
+            <!-- Data will be inserted here dynamically -->
+        </tbody>
+    </table>
+
+    <br>
+    <button id="logout" onclick="location.href='/logout'">Logout</button>
+    </center>
 </body>
 </html>
+
